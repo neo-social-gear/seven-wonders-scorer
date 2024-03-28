@@ -1,1 +1,7 @@
 <h1>Seven Wonders Scorer</h1>
+<ul>
+  <li *ngFor="let score of scoreState.scores()">
+    {{score.userName}}
+  </li>
+</ul>
+<button (click)="addUser()">addUser</button>
