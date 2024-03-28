@@ -1,7 +1,31 @@
 <h1>Seven Wonders Scorer</h1>
 <ul>
   <li *ngFor="let score of scoreState.scores()">
-    {{score.userName}}
+    <section>
+      <h1>{{score.userName}}</h1>
+      <dl>
+        <dt>civilizationScore</dt>
+        <dd>{{score.civilScore}}</dd>
+        <dt>militaryScore</dt>
+        <dd>{{score.militaryScore}}</dd>
+        <dt>scienceScore</dt>
+        <dd>{{score.scienceScore}}</dd>
+        <dt>commercialScore</dt>
+        <dd>{{score.commercialScore}}</dd>
+        <dt>guildScore</dt>
+        <dd>{{score.guildScore}}</dd>
+        <dt>cityScore</dt>
+        <dd>{{score.cityScore}}</dd>
+        <dt>leaderScore</dt>
+        <dd>{{score.leaderScore}}</dd>
+        <dt>coinScore</dt>
+        <dd>{{score.coinScore}}</dd>
+        <dt>wonderScore</dt>
+        <dd>{{score.wonderScore}}</dd>
+        <dt>totalScore</dt>
+        <dd>{{score.sum()}}</dd>
+      </dl>
+    </section>
   </li>
 </ul>
 <button (click)="addUser()">addUser</button>

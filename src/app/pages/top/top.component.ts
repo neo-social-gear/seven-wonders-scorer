@@ -1,12 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { CalculateScoreService } from './services/calculate-score.service';
+import { Score } from './state/score.state';
 
 @Component({
   selector: 'seven-wonders-scorer-top',
   templateUrl: 'top.component.html',
 })
 export class TopComponent {
-  scoreState;
+  scoreState: { scores: Signal<Score[]> };
   constructor(private calculateScoreService: CalculateScoreService) {
     this.scoreState = this.calculateScoreService.state;
   }
