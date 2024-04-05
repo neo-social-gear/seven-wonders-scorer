@@ -9,5 +9,5 @@ export type Score = Readonly<{
   leaderScore: number;
   coinScore: number;
   wonderScore: number;
-  sum: () => number;
+  sum: number;
 }>;

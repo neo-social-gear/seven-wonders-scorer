@@ -1,4 +1,4 @@
-import { signal } from '@angular/core';
+import { Injectable, signal } from '@angular/core';
 import { SignalState } from '../../../types/signal-state';
 import { Score } from './score.state';
 
@@ -6,6 +6,7 @@ export type State = {
   scores: Score[];
 };
 
+@Injectable()
 export class ScoreListState implements SignalState<State> {
   #scoreList = signal<Score[]>([]);
 
@@ -21,7 +22,7 @@ export class ScoreListState implements SignalState<State> {
       leaderScore: 0,
       coinScore: 0,
       wonderScore: 0,
-      sum: function () {
+      get sum(): number {
         return (
           this.civilScore +
           this.militaryScore +
