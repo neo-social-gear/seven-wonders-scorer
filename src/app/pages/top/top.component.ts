@@ -1,21 +1,26 @@
-import { Component, Signal } from '@angular/core';
-import { CalculateScoreService } from './services/calculate-score.service';
+import { Component } from '@angular/core';
+import { ScoreService } from './services/score.service';
 import { Score } from './state/score.state';
+import { UserService } from './services/user.service';
 
 @Component({
   selector: 'seven-wonders-scorer-top',
   templateUrl: 'top.component.html',
 })
 export class TopComponent {
-  scoreState: { scores: Signal<Score[]> };
-  constructor(private calculateScoreService: CalculateScoreService) {
-    this.scoreState = this.calculateScoreService.state;
-  }
+  constructor(
+    private readonly scoreService: ScoreService,
+    private readonly userService: UserService
+  ) {}
 
   public addUser(): void {
     // TODO: current code is debug code. Remove this code after implementing the UI.
-    this.calculateScoreService.addUser('Alice');
-    this.calculateScoreService.addUser('Bob');
-    this.calculateScoreService.addUser('Charlie');
+    this.userService.addUser('Alice');
+    this.userService.addUser('Bob');
+    this.userService.addUser('Charlie');
+  }
+
+  public get scores(): Score[] {
+    return this.scoreService.getScore();
   }
 }
