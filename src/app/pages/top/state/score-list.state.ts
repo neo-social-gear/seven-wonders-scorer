@@ -39,6 +39,12 @@ export class ScoreListState implements SignalState<State> {
     this.#scoreList.update((scores) => [...scores, newUser]);
   }
 
+  public removeUser(userName: string): void {
+    this.#scoreList.update((scores) => {
+      return scores.filter((score) => score.userName !== userName);
+    });
+  }
+
   public setScore(
     userName: string,
     updatedScore: Readonly<{ type: string; score: number }>

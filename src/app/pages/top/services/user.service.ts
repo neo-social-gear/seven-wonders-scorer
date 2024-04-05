@@ -8,4 +8,8 @@ export class UserService {
   public addUser(userName: string): void {
     this.scoreListState.addUser(userName);
   }
+
+  public removeUser(userName: string): void {
+    this.scoreListState.removeUser(userName);
+  }
 }
