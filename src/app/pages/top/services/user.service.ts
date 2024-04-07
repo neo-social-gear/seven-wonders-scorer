@@ -5,11 +5,11 @@ import { ScoreListState } from '../state/score-list.state';
 export class UserService {
   constructor(private readonly scoreListState: ScoreListState) {}
 
-  public addUser(userName: string): void {
-    this.scoreListState.addUser(userName);
+  public addUser(username: string): void {
+    this.scoreListState.addUser(username);
   }
 
-  public removeUser(userName: string): void {
-    this.scoreListState.removeUser(userName);
+  public removeUser(username: string): void {
+    this.scoreListState.removeUser(username);
   }
 }

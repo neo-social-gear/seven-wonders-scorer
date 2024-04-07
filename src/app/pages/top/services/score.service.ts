@@ -9,34 +9,34 @@ export class ScoreService {
     this.#state = scoreListState.asReadonly();
   }
 
-  public updateScore(userName: string, score: number, scoreType: ScoreType) {
+  public updateScore(username: string, score: number, scoreType: ScoreType) {
     switch (scoreType) {
       case ScoreType['Civilization']:
-        this.scoreListState.updateCivilScore(userName, score);
+        this.scoreListState.updateCivilScore(username, score);
         break;
       case ScoreType['Military']:
-        this.scoreListState.updateMilitaryScore(userName, score);
+        this.scoreListState.updateMilitaryScore(username, score);
         break;
       case ScoreType['Science']:
-        this.scoreListState.updateScienceScore(userName, score);
+        this.scoreListState.updateScienceScore(username, score);
         break;
       case ScoreType['Commercial']:
-        this.scoreListState.updateCommercialScore(userName, score);
+        this.scoreListState.updateCommercialScore(username, score);
         break;
       case ScoreType['Guild']:
-        this.scoreListState.updateGuildScore(userName, score);
+        this.scoreListState.updateGuildScore(username, score);
         break;
       case ScoreType['City']:
-        this.scoreListState.updateCityScore(userName, score);
+        this.scoreListState.updateCityScore(username, score);
         break;
       case ScoreType['Leader']:
-        this.scoreListState.updateLeaderScore(userName, score);
+        this.scoreListState.updateLeaderScore(username, score);
         break;
       case ScoreType['Coin']:
-        this.scoreListState.updateCoinScore(userName, score);
+        this.scoreListState.updateCoinScore(username, score);
         break;
       case ScoreType['Wonder']:
-        this.scoreListState.updateWonderScore(userName, score);
+        this.scoreListState.updateWonderScore(username, score);
         break;
       default:
         throw new Error(`Unknown score type: ${scoreType}`);

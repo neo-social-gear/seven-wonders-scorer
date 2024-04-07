@@ -12,11 +12,11 @@ export class ScoreListState implements SignalState<State> {
 
   /**
    * add new user to score list
-   * @param userName target username
+   * @param username target username
    */
-  public addUser(userName: string): void {
+  public addUser(username: string): void {
     const newUser: Score = {
-      userName: userName,
+      username,
       civilScore: 0,
       militaryScore: 0,
       scienceScore: {
@@ -36,85 +36,85 @@ export class ScoreListState implements SignalState<State> {
 
   /**
    * remove user from score list
-   * @param userName target username
+   * @param username target username
    */
-  public removeUser(userName: string): void {
+  public removeUser(username: string): void {
     this.#scoreList.update((scores) => {
-      return scores.filter((score) => score.userName !== userName);
+      return scores.filter((score) => score.username !== username);
     });
   }
 
   /**
    * update civilization score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateCivilScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['Civilization']);
+  public updateCivilScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['Civilization']);
   }
   /**
    * update military score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateMilitaryScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['Military']);
+  public updateMilitaryScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['Military']);
   }
   /**
    * update science score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateScienceScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['Science']);
+  public updateScienceScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['Science']);
   }
   /**
    * update commercial score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateCommercialScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['Commercial']);
+  public updateCommercialScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['Commercial']);
   }
   /**
    * update guild score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateGuildScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['Guild']);
+  public updateGuildScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['Guild']);
   }
   /**
    * update city score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateCityScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['City']);
+  public updateCityScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['City']);
   }
   /**
    * update leader score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateLeaderScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['Leader']);
+  public updateLeaderScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['Leader']);
   }
   /**
    * update coin score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateCoinScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['Coin']);
+  public updateCoinScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['Coin']);
   }
   /**
    * update wonder score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    */
-  public updateWonderScore(userName: string, score: number): void {
-    this.updateScore(userName, score, ScoreType['Wonder']);
+  public updateWonderScore(username: string, score: number): void {
+    this.updateScore(username, score, ScoreType['Wonder']);
   }
 
   /**
@@ -128,19 +128,19 @@ export class ScoreListState implements SignalState<State> {
 
   /**
    * update score
-   * @param userName target username
+   * @param username target username
    * @param score updated score
    * @param scoreType score type
    * @private
    */
   private updateScore(
-    userName: string,
+    username: string,
     score: number,
     scoreType: ScoreType
   ): void {
     this.#scoreList.update((scores) => {
       return scores.map((s) => {
-        if (s.userName === userName) {
+        if (s.username === username) {
           return {
             ...s,
             [scoreType]: score,

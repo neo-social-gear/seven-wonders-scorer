@@ -2,7 +2,7 @@
  * Score state
  */
 export type Score = Readonly<{
-  userName: string;
+  username: string;
   civilScore: number;
   militaryScore: number;
   scienceScore: Readonly<{
