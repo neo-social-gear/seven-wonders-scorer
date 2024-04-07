@@ -1,3 +1,6 @@
+/**
+ * Score state
+ */
 export type Score = Readonly<{
   userName: string;
   civilScore: number;
@@ -15,7 +18,10 @@ export type Score = Readonly<{
   wonderScore: number;
 }>;
 
-export const ScoreType: { [key: string]: keyof Score } = {
+/**
+ * Score type
+ */
+export const ScoreType: Record<string, keyof Score> = {
   Civilization: 'civilScore',
   Military: 'militaryScore',
   Science: 'scienceScore',
