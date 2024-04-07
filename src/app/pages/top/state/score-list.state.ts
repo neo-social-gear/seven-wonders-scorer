@@ -1,6 +1,6 @@
 import { Injectable, signal } from '@angular/core';
 import { SignalState } from '../../../types/signal-state';
-import { Score } from './score.state';
+import { Score, ScoreType } from './score.state';
 
 export type State = {
   scores: Score[];
@@ -15,26 +15,17 @@ export class ScoreListState implements SignalState<State> {
       userName: userName,
       civilScore: 0,
       militaryScore: 0,
-      scienceScore: 0,
+      scienceScore: {
+        gear: 0,
+        compass: 0,
+        tablet: 0,
+      },
       commercialScore: 0,
       guildScore: 0,
       cityScore: 0,
       leaderScore: 0,
       coinScore: 0,
       wonderScore: 0,
-      get sum(): number {
-        return (
-          this.civilScore +
-          this.militaryScore +
-          this.scienceScore +
-          this.commercialScore +
-          this.guildScore +
-          this.cityScore +
-          this.leaderScore +
-          this.coinScore +
-          this.wonderScore
-        );
-      },
     };
     this.#scoreList.update((scores) => [...scores, newUser]);
   }
@@ -45,26 +36,55 @@ export class ScoreListState implements SignalState<State> {
     });
   }
 
-  public setScore(
-    userName: string,
-    updatedScore: Readonly<{ type: string; score: number }>
-  ): void {
-    this.#scoreList.update((scores) => {
-      return scores.map((score) => {
-        if (score.userName === userName) {
-          return {
-            ...score,
-            [updatedScore.type]: updatedScore.score,
-          };
-        }
-        return score;
-      });
-    });
+  public updateCivilScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['Civilization']);
+  }
+  public updateMilitaryScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['Military']);
+  }
+  public updateScienceScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['Science']);
+  }
+  public updateCommercialScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['Commercial']);
+  }
+  public updateGuildScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['Guild']);
+  }
+  public updateCityScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['City']);
+  }
+  public updateLeaderScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['Leader']);
+  }
+  public updateCoinScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['Coin']);
+  }
+  public updateWonderScore(userName: string, score: number): void {
+    this.updateScore(userName, score, ScoreType['Wonder']);
   }
 
   public asReadonly() {
     return {
       scores: this.#scoreList.asReadonly(),
     };
+  }
+
+  private updateScore(
+    userName: string,
+    score: number,
+    scoreType: ScoreType
+  ): void {
+    this.#scoreList.update((scores) => {
+      return scores.map((s) => {
+        if (s.userName === userName) {
+          return {
+            ...s,
+            [scoreType]: score,
+          };
+        }
+        return s;
+      });
+    });
   }
 }

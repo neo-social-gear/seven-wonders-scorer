@@ -20,7 +20,7 @@ export class TopComponent {
     this.userService.addUser('Charlie');
   }
 
-  public get scores(): Score[] {
+  public get scores() {
     return this.scoreService.getScore();
   }
 }
