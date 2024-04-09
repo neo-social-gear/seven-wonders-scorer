@@ -1,31 +1,67 @@
-<h1>Seven Wonders Scorer</h1>
 <ul>
   <li *ngFor="let score of scores">
     <section>
-      <h1>{{score.username}}</h1>
+      <h2>{{ score.username }}</h2>
       <dl>
         <dt>civilizationScore</dt>
-        <dd>{{score.civilScore}}</dd>
+        <dd>{{ score.civilScore }}</dd>
         <dt>militaryScore</dt>
-        <dd>{{score.militaryScore}}</dd>
+        <dd>{{ score.militaryScore }}</dd>
         <dt>scienceScore</dt>
-        <dd>{{score.scienceScore.sum}}</dd>
+        <dd>{{ score.scienceScore.sum }}</dd>
         <dt>commercialScore</dt>
-        <dd>{{score.commercialScore}}</dd>
+        <dd>{{ score.commercialScore }}</dd>
         <dt>guildScore</dt>
-        <dd>{{score.guildScore}}</dd>
+        <dd>{{ score.guildScore }}</dd>
         <dt>cityScore</dt>
-        <dd>{{score.cityScore}}</dd>
+        <dd>{{ score.cityScore }}</dd>
         <dt>leaderScore</dt>
-        <dd>{{score.leaderScore}}</dd>
+        <dd>{{ score.leaderScore }}</dd>
         <dt>coinScore</dt>
-        <dd>{{score.coinScore}}</dd>
+        <dd>{{ score.coinScore }}</dd>
         <dt>wonderScore</dt>
-        <dd>{{score.wonderScore}}</dd>
+        <dd>{{ score.wonderScore }}</dd>
         <dt>totalScore</dt>
-        <dd>{{score.sum}}</dd>
+        <dd>{{ score.sum }}</dd>
       </dl>
     </section>
   </li>
 </ul>
 <button (click)="addUser()">addUser</button>
+<form [formGroup]="updateScoreForm" (ngSubmit)="updateScore()">
+  <h2>update score form</h2>
+  <label>
+    username: <input type="text" formControlName="username"/>
+  </label>
+  <label>
+    civilizationScore: <input type="number" formControlName="civilizationScore"/>
+  </label>
+  <label>
+    militaryScore: <input type="number" formControlName="militaryScore"/>
+  </label>
+  <div formGroupName="scienceScore">
+    scienceScore
+    <label>compass count: <input type="number" formControlName="compass"/></label>
+    <label>gear count: <input type="number" formControlName="gear"/></label>
+    <label>tablet count: <input type="number" formControlName="tablet"/></label>
+  </div>
+  <label>
+    commercialScore: <input type="number" formControlName="commercialScore"/>
+  </label>
+  <label>
+    guildScore: <input type="number" formControlName="guildScore"/>
+  </label>
+  <label>
+    cityScore: <input type="number" formControlName="cityScore"/>
+  </label>
+  <label>
+    leaderScore: <input type="number" formControlName="leaderScore"/>
+  </label>
+  <label>
+    coinScore: <input type="number" formControlName="coinScore"/>
+  </label>
+  <label>
+    wonderScore: <input type="number" formControlName="wonderScore"/>
+  </label>
+  <button type="submit" [disabled]="!updateScoreForm.valid">登録</button>
+</form>
