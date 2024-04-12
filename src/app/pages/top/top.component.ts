@@ -70,7 +70,6 @@ export class TopComponent {
   }
 
   public updateScore() {
-    console.log(this.updateScoreForm.controls);
     if (!this.updateScoreForm.valid) {
       throw new Error(`updateScoreForm is invalid`);
     }
