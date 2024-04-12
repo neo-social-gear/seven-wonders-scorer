@@ -71,13 +71,14 @@ export class TopComponent {
 
   public updateScore() {
     console.log(this.updateScoreForm.controls);
-    if (this.updateScoreForm.valid) {
-      this.scoreService.updateScore(
-        this.updateScoreForm.controls.username.value,
-        this.updateScoreForm.controls.civilizationScore.value,
-        ScoreType['Civilization']
-      );
+    if (!this.updateScoreForm.valid) {
+      throw new Error(`updateScoreForm is invalid`);
     }
+    this.scoreService.updateScore(
+      this.updateScoreForm.controls.username.value,
+      this.updateScoreForm.controls.civilizationScore.value,
+      ScoreType['Civilization']
+    );
   }
 
   public get scores() {
