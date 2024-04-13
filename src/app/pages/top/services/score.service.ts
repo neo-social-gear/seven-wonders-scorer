@@ -1,6 +1,21 @@
 import { Injectable } from '@angular/core';
 import { ScoreListState } from '../state/score-list.state';
-import { ScoreType } from '../state/score.state';
+
+export type Score = Readonly<{
+  civilScore: number;
+  militaryScore: number;
+  scienceScore: Readonly<{
+    gear: number;
+    compass: number;
+    tablet: number;
+  }>;
+  commercialScore: number;
+  guildScore: number;
+  cityScore: number;
+  leaderScore: number;
+  coinScore: number;
+  wonderScore: number;
+}>;
 
 @Injectable()
 export class ScoreService {
@@ -9,38 +24,20 @@ export class ScoreService {
     this.#state = scoreListState.asReadonly();
   }
 
-  public updateScore(username: string, score: number, scoreType: ScoreType) {
-    switch (scoreType) {
-      case ScoreType['Civilization']:
-        this.scoreListState.updateCivilScore(username, score);
-        break;
-      case ScoreType['Military']:
-        this.scoreListState.updateMilitaryScore(username, score);
-        break;
-      case ScoreType['Science']:
-        this.scoreListState.updateScienceScore(username, score);
-        break;
-      case ScoreType['Commercial']:
-        this.scoreListState.updateCommercialScore(username, score);
-        break;
-      case ScoreType['Guild']:
-        this.scoreListState.updateGuildScore(username, score);
-        break;
-      case ScoreType['City']:
-        this.scoreListState.updateCityScore(username, score);
-        break;
-      case ScoreType['Leader']:
-        this.scoreListState.updateLeaderScore(username, score);
-        break;
-      case ScoreType['Coin']:
-        this.scoreListState.updateCoinScore(username, score);
-        break;
-      case ScoreType['Wonder']:
-        this.scoreListState.updateWonderScore(username, score);
-        break;
-      default:
-        throw new Error(`Unknown score type: ${scoreType}`);
-    }
+  public updateScore(username: string, score: Score) {
+    this.scoreListState.updateCivilScore(username, score.civilScore);
+    this.scoreListState.updateMilitaryScore(username, score.militaryScore);
+    this.scoreListState.updateScienceScore(username, {
+      gear: score.scienceScore.gear,
+      compass: score.scienceScore.compass,
+      tablet: score.scienceScore.tablet,
+    });
+    this.scoreListState.updateCommercialScore(username, score.commercialScore);
+    this.scoreListState.updateGuildScore(username, score.guildScore);
+    this.scoreListState.updateCityScore(username, score.cityScore);
+    this.scoreListState.updateLeaderScore(username, score.leaderScore);
+    this.scoreListState.updateCoinScore(username, score.coinScore);
+    this.scoreListState.updateWonderScore(username, score.wonderScore);
   }
 
   public getScore() {

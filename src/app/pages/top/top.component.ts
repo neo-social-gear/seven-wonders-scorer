@@ -75,8 +75,23 @@ export class TopComponent {
     }
     this.scoreService.updateScore(
       this.updateScoreForm.controls.username.value,
-      this.updateScoreForm.controls.civilizationScore.value,
-      ScoreType['Civilization']
+      {
+        civilScore: this.updateScoreForm.controls.civilizationScore.value,
+        militaryScore: this.updateScoreForm.controls.militaryScore.value,
+        scienceScore: {
+          gear: this.updateScoreForm.controls.scienceScore.controls.gear.value,
+          compass:
+            this.updateScoreForm.controls.scienceScore.controls.compass.value,
+          tablet:
+            this.updateScoreForm.controls.scienceScore.controls.tablet.value,
+        },
+        commercialScore: this.updateScoreForm.controls.commercialScore.value,
+        guildScore: this.updateScoreForm.controls.guildScore.value,
+        cityScore: this.updateScoreForm.controls.cityScore.value,
+        leaderScore: this.updateScoreForm.controls.leaderScore.value,
+        coinScore: this.updateScoreForm.controls.coinScore.value,
+        wonderScore: this.updateScoreForm.controls.wonderScore.value,
+      }
     );
   }
 

@@ -50,71 +50,87 @@ export class ScoreListState implements SignalState<State> {
    * @param score updated score
    */
   public updateCivilScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['Civilization']);
+    this.updateScore(username, { score, scoreType: ScoreType.Civilization });
   }
+
   /**
    * update military score
    * @param username target username
    * @param score updated score
    */
   public updateMilitaryScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['Military']);
+    this.updateScore(username, { score, scoreType: ScoreType.Military });
   }
+
   /**
    * update science score
    * @param username target username
    * @param score updated score
    */
-  public updateScienceScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['Science']);
+  public updateScienceScore(
+    username: string,
+    score: Readonly<Record<'gear' | 'compass' | 'tablet', number>>
+  ): void {
+    this.updateScore(username, {
+      gear: score.gear,
+      compass: score.compass,
+      tablet: score.tablet,
+      scoreType: ScoreType.Science,
+    });
   }
+
   /**
    * update commercial score
    * @param username target username
    * @param score updated score
    */
   public updateCommercialScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['Commercial']);
+    this.updateScore(username, { score, scoreType: ScoreType.Commercial });
   }
+
   /**
    * update guild score
    * @param username target username
    * @param score updated score
    */
   public updateGuildScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['Guild']);
+    this.updateScore(username, { score, scoreType: ScoreType.Guild });
   }
+
   /**
    * update city score
    * @param username target username
    * @param score updated score
    */
   public updateCityScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['City']);
+    this.updateScore(username, { score, scoreType: ScoreType.City });
   }
+
   /**
    * update leader score
    * @param username target username
    * @param score updated score
    */
   public updateLeaderScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['Leader']);
+    this.updateScore(username, { score, scoreType: ScoreType.Leader });
   }
+
   /**
    * update coin score
    * @param username target username
    * @param score updated score
    */
   public updateCoinScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['Coin']);
+    this.updateScore(username, { score, scoreType: ScoreType.Coin });
   }
+
   /**
    * update wonder score
    * @param username target username
    * @param score updated score
    */
   public updateWonderScore(username: string, score: number): void {
-    this.updateScore(username, score, ScoreType['Wonder']);
+    this.updateScore(username, { score, scoreType: ScoreType.Wonder });
   }
 
   /**
@@ -129,21 +145,40 @@ export class ScoreListState implements SignalState<State> {
   /**
    * update score
    * @param username target username
-   * @param score updated score
+   * @param data updated score
    * @param scoreType score type
    * @private
    */
   private updateScore(
     username: string,
-    score: number,
-    scoreType: ScoreType
+    data:
+      | Readonly<{
+          score: number;
+          scoreType: Exclude<ScoreType, typeof ScoreType.Science>;
+        }>
+      | Readonly<{
+          gear: number;
+          compass: number;
+          tablet: number;
+          scoreType: typeof ScoreType.Science;
+        }>
   ): void {
     this.#scoreList.update((scores) => {
       return scores.map((s) => {
         if (s.username === username) {
+          if (data.scoreType === ScoreType.Science) {
+            return {
+              ...s,
+              scienceScore: {
+                gear: data.gear,
+                compass: data.compass,
+                tablet: data.tablet,
+              },
+            };
+          }
           return {
             ...s,
-            [scoreType]: score,
+            [data.scoreType]: data.score,
           };
         }
         return s;

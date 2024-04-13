@@ -21,7 +21,7 @@ export type Score = Readonly<{
 /**
  * Score type
  */
-export const ScoreType: Record<string, keyof Score> = {
+export const ScoreType = {
   Civilization: 'civilScore',
   Military: 'militaryScore',
   Science: 'scienceScore',
