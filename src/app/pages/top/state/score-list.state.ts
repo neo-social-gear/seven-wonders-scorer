@@ -145,8 +145,7 @@ export class ScoreListState implements SignalState<State> {
   /**
    * update score
    * @param username target username
-   * @param data updated score
-   * @param scoreType score type
+   * @param data updated score data
    * @private
    */
   private updateScore(
