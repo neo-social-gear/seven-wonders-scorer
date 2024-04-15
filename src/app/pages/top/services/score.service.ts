@@ -50,18 +50,26 @@ export class ScoreService {
       const scienceScoreSum =
         scienceSet * 7 +
         (score.scienceScore.gear > 0
-          ? Math.pow(score.scienceScore.gear, score.scienceScore.gear)
+          ? score.scienceScore.gear * score.scienceScore.gear
           : 0) +
         (score.scienceScore.compass > 0
-          ? Math.pow(score.scienceScore.compass, score.scienceScore.compass)
+          ? score.scienceScore.compass * score.scienceScore.compass
           : 0) +
         (score.scienceScore.tablet > 0
-          ? Math.pow(score.scienceScore.tablet, score.scienceScore.tablet)
+          ? score.scienceScore.tablet * score.scienceScore.tablet
           : 0);
       const scoreSum = Object.values(score).reduce(
         (sum: number, value): number => {
           if (typeof value === 'number') {
             return sum + value;
+          }
+          if (
+            typeof value === 'object' &&
+            'gear' in value &&
+            'compass' in value &&
+            'tablet' in value
+          ) {
+            return sum + scienceScoreSum;
           }
           return sum;
         },
