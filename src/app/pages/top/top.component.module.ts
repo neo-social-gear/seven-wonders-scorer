@@ -8,12 +8,14 @@ import { CommonModule } from '@angular/common';
 import { ScoreListState } from './state/score-list.state';
 import { UserService } from './services/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserCardModule } from './components/user-card/user-card.component.module';
 
 @NgModule({
   imports: [
     RouterModule.forChild(topRoutes),
     CommonModule,
     ReactiveFormsModule,
+    UserCardModule,
   ],
   exports: [],
   declarations: [TopComponent],

@@ -7,7 +7,6 @@ import {
   NonNullableFormBuilder,
   Validators,
 } from '@angular/forms';
-import { ScoreType } from './state/score.state';
 
 interface UpdateScoreForm {
   username: FormControl<string>;
