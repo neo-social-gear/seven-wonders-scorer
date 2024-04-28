@@ -1,7 +1,7 @@
 /**
  * Score state
  */
-export type Score = Readonly<{
+export type ScoreState = Readonly<{
   username: string;
   civilScore: number;
   militaryScore: number;
