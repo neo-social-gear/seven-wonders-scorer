@@ -40,7 +40,7 @@ export class ScoreService {
     this.scoreListState.updateWonderScore(username, score.wonderScore);
   }
 
-  public getScore() {
+  public getScore(): Score[] {
     return this.#state.scores().map((score) => {
       const scienceSet = Math.min(
         score.scienceScore.compass,

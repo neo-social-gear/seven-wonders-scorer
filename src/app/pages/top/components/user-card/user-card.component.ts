@@ -1,4 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import type { Score } from '../../types/score';
+import type { Optional } from '../../../../types/utility';
 
 @Component({
   selector: 'seven-wonders-scorer-user-card',
@@ -6,5 +8,5 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['user-card.component.scss'],
 })
 export class UserCardComponent {
-  @Input() score: any;
+  @Input() score: Optional<Score>;
 }
