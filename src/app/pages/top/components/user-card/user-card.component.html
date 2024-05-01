@@ -7,68 +7,18 @@
     </div>
   </div>
   <dl class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_1fr))] gap-4 ml-4">
-    <div class="w-fit">
-      <dt class="hidden">civilizationScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_civilization_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.civilScore }}</span>
-      </dd>
-    </div>
-    <div class="w-fit">
-      <dt class="hidden">militaryScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_military_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.militaryScore }}</span>
-      </dd>
-    </div>
-    <div class="w-fit">
-      <dt class="hidden">scienceScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_science_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.scienceScore.sum }}</span>
-      </dd>
-    </div>
-    <div class="w-fit">
-      <dt class="hidden">commercialScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_commercial_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.commercialScore }}</span>
-      </dd>
-    </div>
-    <div class="w-fit">
-      <dt class="hidden">guildScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_guild_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.guildScore }}</span>
-      </dd>
-    </div>
-    <div class="w-fit">
-      <dt class="hidden">cityScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_city_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.cityScore }}</span>
-      </dd>
-    </div>
-    <div class="w-fit">
-      <dt class="hidden">leaderScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_leader_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.leaderScore }}</span>
-      </dd>
-    </div>
-    <div class="w-fit">
-      <dt class="hidden">coinScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_coin_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.coinScore }}</span>
-      </dd>
-    </div>
-    <div class="w-fit">
-      <dt class="hidden">wonderScore</dt>
-      <dd class="flex items-center justify-center w-24 h-24 border border-solid border-border_black rounded-full bg-bg_wonder_score">
-      <span
-          class="flex items-center justify-center w-20 h-20 text-text_black text-4xl bg-white p-5 border border-solid border-white rounded-full">{{ score.wonderScore }}</span>
-      </dd>
-    </div>
+    <seven-wonders-scorer-score-item [score]="score.civilScore"
+                                     scoreType="civilization"></seven-wonders-scorer-score-item>
+    <seven-wonders-scorer-score-item [score]="score.militaryScore"
+                                     scoreType="military"></seven-wonders-scorer-score-item>
+    <seven-wonders-scorer-score-item [score]="score.scienceScore.sum"
+                                     scoreType="science"></seven-wonders-scorer-score-item>
+    <seven-wonders-scorer-score-item [score]="score.commercialScore"
+                                     scoreType="commercial"></seven-wonders-scorer-score-item>
+    <seven-wonders-scorer-score-item [score]="score.guildScore" scoreType="guild"></seven-wonders-scorer-score-item>
+    <seven-wonders-scorer-score-item [score]="score.cityScore" scoreType="city"></seven-wonders-scorer-score-item>
+    <seven-wonders-scorer-score-item [score]="score.leaderScore" scoreType="leader"></seven-wonders-scorer-score-item>
+    <seven-wonders-scorer-score-item [score]="score.coinScore" scoreType="coin"></seven-wonders-scorer-score-item>
+    <seven-wonders-scorer-score-item [score]="score.wonderScore" scoreType="wonder"></seven-wonders-scorer-score-item>
   </dl>
 </section>
