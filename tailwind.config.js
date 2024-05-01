@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width: {
+        main_content: '1200px',
+      },
       colors: {
         text_black: '#333333',
         border_black: '#000000',
