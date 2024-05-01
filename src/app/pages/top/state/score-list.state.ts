@@ -1,21 +1,21 @@
 import { Injectable, signal } from '@angular/core';
 import { SignalState } from '../../../types/signal-state';
-import { Score, ScoreType } from './score.state';
+import { ScoreState, ScoreType } from './score.state';
 
 export type State = {
-  scores: Score[];
+  scores: ScoreState[];
 };
 
 @Injectable()
 export class ScoreListState implements SignalState<State> {
-  #scoreList = signal<Score[]>([]);
+  #scoreList = signal<ScoreState[]>([]);
 
   /**
    * add new user to score list
    * @param username target username
    */
   public addUser(username: string): void {
-    const newUser: Score = {
+    const newUser: ScoreState = {
       username,
       civilScore: 0,
       militaryScore: 0,

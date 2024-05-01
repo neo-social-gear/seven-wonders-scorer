@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ScoreListState } from '../state/score-list.state';
+import { Score } from '../types/score';
 
-export type Score = Readonly<{
+export type UpdateScore = Readonly<{
   civilScore: number;
   militaryScore: number;
   scienceScore: Readonly<{
@@ -24,7 +25,7 @@ export class ScoreService {
     this.#state = scoreListState.asReadonly();
   }
 
-  public updateScore(username: string, score: Score) {
+  public updateScore(username: string, score: UpdateScore) {
     this.scoreListState.updateCivilScore(username, score.civilScore);
     this.scoreListState.updateMilitaryScore(username, score.militaryScore);
     this.scoreListState.updateScienceScore(username, {
@@ -40,7 +41,7 @@ export class ScoreService {
     this.scoreListState.updateWonderScore(username, score.wonderScore);
   }
 
-  public getScore() {
+  public getScore(): Score[] {
     return this.#state.scores().map((score) => {
       const scienceSet = Math.min(
         score.scienceScore.compass,

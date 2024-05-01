@@ -8,7 +8,29 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
-    extend: {},
+    screens: {
+      smartphone: '375px',
+      desktop: '1024px',
+    },
+    extend: {
+      width: {
+        sp_main_content: '375px',
+        pc_main_content: '1024px',
+      },
+      colors: {
+        text_black: '#333333',
+        border_black: '#000000',
+        bg_civilization_score: '#448AFF',
+        bg_military_score: '#EB5757',
+        bg_commercial_score: '#F2C94C',
+        bg_science_score: '#27AE60',
+        bg_guild_score: '#BB6BD9',
+        bg_city_score: '#333333',
+        bg_leader_score: '#F5F5F5',
+        bg_wonder_score: '#EDB91B',
+        bg_coin_score: '#F5D67A',
+      },
+    },
   },
   plugins: [],
 };
