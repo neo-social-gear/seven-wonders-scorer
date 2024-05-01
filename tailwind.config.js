@@ -8,9 +8,14 @@ module.exports = {
     ...createGlobPatternsForDependencies(__dirname),
   ],
   theme: {
+    screens: {
+      smartphone: '375px',
+      desktop: '1024px',
+    },
     extend: {
       width: {
-        main_content: '1024px',
+        sp_main_content: '375px',
+        pc_main_content: '1024px',
       },
       colors: {
         text_black: '#333333',

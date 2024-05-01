@@ -1,12 +1,13 @@
-<section class="grid grid-cols-[auto_1fr] border border-solid border-border_black rounded py-3 px-4 max-w-xl">
+<section
+    class="grid grid-cols-[auto_1fr] border border-solid border-border_black rounded p-2 desktop:py-3 desktop:px-4 max-w-xl">
   <div class="flex flex-col items-center flex-none">
-    <h2 class="order-2 font-bold text-text_black text-4xl">{{ score.username }}</h2>
+    <h2 class="order-2 font-bold text-text_black text-2xl desktop:text-4xl">{{ score.username }}</h2>
     <div
-        class="order-1 flex items-center justify-center w-28 h-28 border border-solid border-border_black rounded-full text-text_black text-4xl">
+        class="order-1 flex items-center justify-center w-20 desktop:w-28 h-20 desktop:h-28 border border-solid border-border_black rounded-full text-text_black text-2xl desktop:text-4xl">
       {{ score.sum }}
     </div>
   </div>
-  <dl class="grid grid-cols-[repeat(auto-fit,_minmax(96px,_1fr))] gap-4 ml-4">
+  <dl class="grid grid-cols-[repeat(auto-fit,_minmax(80px,_1fr))] desktop:grid-cols-[repeat(auto-fit,_minmax(96px,_1fr))] gap-2 desktop:gap-4 ml-2 desktop:ml-4">
     <seven-wonders-scorer-score-item [score]="score.civilScore"
                                      scoreType="civilization"></seven-wonders-scorer-score-item>
     <seven-wonders-scorer-score-item [score]="score.militaryScore"
