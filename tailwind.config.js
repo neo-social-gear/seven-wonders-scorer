@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       width: {
-        main_content: '1200px',
+        main_content: '1024px',
       },
       colors: {
         text_black: '#333333',
