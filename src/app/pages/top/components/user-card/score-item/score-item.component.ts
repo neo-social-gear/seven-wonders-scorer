@@ -51,7 +51,7 @@ export class ScoreItemComponent implements OnInit {
         break;
       default: {
         const _type: never = this.scoreType;
-        throw new Error(`Unknown scoreType: ${this.scoreType}`);
+        throw new Error(`Unknown scoreType: ${_type}`);
       }
     }
   }
