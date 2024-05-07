@@ -1,6 +1,7 @@
 <ul class="grid grid-cols-1 desktop:grid-cols-2 gap-2 desktop:gap-4">
   <li *ngFor="let score of scores">
-    <seven-wonders-scorer-user-card [score]="score"></seven-wonders-scorer-user-card>
+    <seven-wonders-scorer-user-card [score]="score"
+                                    (openModalEvent)="openModal($event)"></seven-wonders-scorer-user-card>
   </li>
 </ul>
 <button (click)="addUser()">addUser</button>
@@ -41,3 +42,7 @@
   </label>
   <button type="submit" [disabled]="!updateScoreForm.valid">登録</button>
 </form>
+<seven-wonders-scorer-score-update-modal [showModal]="showModal"
+                                         [username]="username"
+                                         (closeModalEvent)="closeModal()"
+></seven-wonders-scorer-score-update-modal>

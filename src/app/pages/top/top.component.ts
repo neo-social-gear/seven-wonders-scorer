@@ -31,6 +31,8 @@ interface UpdateScoreForm {
 })
 export class TopComponent {
   public updateScoreForm: FormGroup<UpdateScoreForm>;
+  public showModal = false;
+  public username = '';
 
   // public updateScoreForm;
 
@@ -92,6 +94,16 @@ export class TopComponent {
         wonderScore: this.updateScoreForm.controls.wonderScore.value,
       }
     );
+  }
+
+  public openModal(username: string) {
+    this.showModal = true;
+    this.username = username;
+  }
+
+  public closeModal() {
+    this.showModal = false;
+    this.username = '';
   }
 
   public get scores() {
